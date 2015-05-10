@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Task;
+import models.User;
 
 import java.util.Date;
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public class Application extends Controller {
             return badRequest(tasks.render(taskList, form));
         } else {
             Task newTask = form.get();
+            User user = User.find.where().eq("name", request().username()).findUnique();
+            newTask.user = user;
             newTask.save();
             return redirect(routes.Application.tasks());
         }

@@ -18,7 +18,7 @@
     } else {
        <ul>
        @for(task <- taskList) {
-           <li>@task.name</li>
+           <li>@task.name (by @task.user.name)</li>
        }
        </ul>
     }
