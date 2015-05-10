@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,7 +16,13 @@ public class Application extends Controller {
 
     public static Result tasks() {
         List<String> taskList = Arrays.asList("foo", "bar", "baz");
-        return ok(tasks.render(taskList));
+
+        List<Integer> fbList = new ArrayList<>(50);
+        for (int i = 1; i <= 50; i++) {
+            fbList.add(i);
+        }
+
+        return ok(tasks.render(taskList, fbList));
     }
 
     public static Result help() {
