@@ -26,6 +26,7 @@ public class Application extends Controller {
         return ok(tasks.render(taskList, taskForm));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result createTask() {
         Form<Task> form = taskForm.bindFromRequest();
 
