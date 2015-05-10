@@ -12,6 +12,6 @@ public class Application extends Controller {
     }
 
     public static Result tasks() {
-        return TODO;
+        return ok("Here is the task list page");
     }
 }
