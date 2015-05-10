@@ -15,6 +15,8 @@ public class Task extends Model {
     public Integer id;
 
     @Required
+    @MinLength(2)
+    @MaxLength(100)
     public String name;
 
     public Date period;
