@@ -7,6 +7,7 @@ create table task (
   id                        integer not null,
   name                      varchar(255),
   period                    timestamp,
+  user_id                   bigint,
   constraint pk_task primary key (id))
 ;
 
@@ -21,6 +22,8 @@ create sequence task_seq;
 
 create sequence user_seq;
 
+alter table task add constraint fk_task_user_1 foreign key (user_id) references user (id) on delete restrict on update restrict;
+create index ix_task_user_1 on task (user_id);
 
 
 

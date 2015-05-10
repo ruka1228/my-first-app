@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -14,6 +16,9 @@ public class User extends Model {
     public String name;
 
     public String password;
+
+    @OneToMany
+    public List<Task> tasks;
 
     public static Finder<Long, User> find = new Finder<Long,User>(
         Long.class, User.class
