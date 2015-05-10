@@ -27,8 +27,8 @@ public class Application extends Controller {
         task.period = new Date();
         task.save();
 
-        List<Task> taskList = Task.find.all();
-        return ok(tasks.render(taskList));
+        List<Task> taskList = Task.find.where().eq("name", "ピザを5枚食べる").findList();
+        return ok(tasks.render(taskList, task));
     }
 
     public static Result help() {
