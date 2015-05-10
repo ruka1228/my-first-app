@@ -1,8 +1,10 @@
 package controllers;
 
+import java.util.Arrays;
+import java.util.List;
+
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -12,7 +14,8 @@ public class Application extends Controller {
     }
 
     public static Result tasks() {
-        return ok(tasks.render("Task List"));
+        List<String> taskList = Arrays.asList("foo", "bar", "baz");
+        return ok(tasks.render(taskList));
     }
 
     public static Result help() {
