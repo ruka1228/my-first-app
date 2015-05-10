@@ -26,9 +26,15 @@ public class Application extends Controller {
     }
 
     public static Result createTask() {
-        Task newTask = Form.form(Task.class).bindFromRequest().get();
-        newTask.save();
-        return redirect(routes.Application.tasks());
+        Form<Task> form = Form.form(Task.class).bindFromRequest();
+
+        if (form.hasErrors()) {
+            return badRequest(form.errorsAsJson());
+        } else {
+            Task newTask = form.get();
+            newTask.save();
+            return redirect(routes.Application.tasks());
+        }
     }
 
     public static Result help() {

@@ -2,6 +2,7 @@ package models;
 
 import java.util.Date;
 
+import play.data.validation.Constraints.*;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -13,6 +14,7 @@ public class Task extends Model {
     @Id
     public Integer id;
 
+    @Required
     public String name;
 
     public Date period;
