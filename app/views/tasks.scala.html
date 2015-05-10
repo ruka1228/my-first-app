@@ -1,4 +1,4 @@
-@(taskList: List[String], fbList: List[Integer])
+@(taskList: List[String])
 
 @common("今もってるタスク") {
     <h1>タスク一覧</h1>
@@ -12,24 +12,4 @@
        }
        </ul>
     }
-
-    <ul>
-    @for(n <- fbList) {
-        <li>
-        @if(n % 15 == 0) {
-            FizzBuzz
-        } else {
-            @if(n % 3 == 0) {
-                Fizz
-            } else {
-                @if(n % 5 == 0) {
-                    Buzz
-                } else {
-                    @n
-                }
-            }
-        }
-        </li>
-    }
-    </ul>
 }

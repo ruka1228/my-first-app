@@ -1,5 +1,7 @@
 package controllers;
 
+import models.Task;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,14 +17,13 @@ public class Application extends Controller {
     }
 
     public static Result tasks() {
+        Task task   = new Task();
+        task.name   = "Pizza を食べる";
+        task.period = new Date();
+        task.save();
+
         List<String> taskList = Arrays.asList("foo", "bar", "baz");
-
-        List<Integer> fbList = new ArrayList<>(50);
-        for (int i = 1; i <= 50; i++) {
-            fbList.add(i);
-        }
-
-        return ok(tasks.render(taskList, fbList));
+        return ok(tasks.render(taskList));
     }
 
     public static Result help() {
