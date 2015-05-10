@@ -30,6 +30,11 @@ public class Authentication extends Controller {
         return ok(index.render(loginForm));
     }
 
+    public static Result logout() {
+        session().clear();
+        return redirect(routes.Authentication.index());
+    }
+
     public static Result authenticate() {
         Form<Login> form = loginForm.bindFromRequest();
 
