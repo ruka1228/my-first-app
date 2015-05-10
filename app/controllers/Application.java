@@ -12,7 +12,7 @@ public class Application extends Controller {
     }
 
     public static Result tasks() {
-        return ok(tasks.render());
+        return ok(tasks.render("Task List"));
     }
 
     public static Result help() {
