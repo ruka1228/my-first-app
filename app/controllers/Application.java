@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 
 import play.*;
+import play.data.Form;
 import play.mvc.*;
 import views.html.*;
 
@@ -25,10 +26,7 @@ public class Application extends Controller {
     }
 
     public static Result createTask() {
-        Map<String, String[]> params = request().body().asFormUrlEncoded();
-
-        Task newTask = new Task();
-        newTask.name = params.get("name")[0]; // <input type="text" name="name" /> に入力された値
+        Task newTask = Form.form(Task.class).bindFromRequest().get();
         newTask.save();
         return redirect(routes.Application.tasks());
     }
