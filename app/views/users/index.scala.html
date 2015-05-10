@@ -12,6 +12,7 @@
                     <th>ID</th>
                     <th>ユーザ名</th>
                     <th>パスワード</th>
+                    <th>作成済みのタスクの数</th>
                 </tr>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                     <td>@u.id</td>
                     <td>@u.name</td>
                     <td>@u.password</td>
+                    <td>@u.tasks.length</td>
                 </tr>
             }
             </tbody>
