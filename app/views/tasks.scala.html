@@ -1,4 +1,4 @@
-@(taskList: List[String])
+@(taskList: List[Task])
 
 @common("今もってるタスク") {
     <h1>タスク一覧</h1>
@@ -8,7 +8,7 @@
     } else {
        <ul>
        @for(task <- taskList) {
-           <li>@task</li>
+           <li>@task.name</li>
        }
        </ul>
     }

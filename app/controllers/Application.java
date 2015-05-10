@@ -22,7 +22,7 @@ public class Application extends Controller {
         task.period = new Date();
         task.save();
 
-        List<String> taskList = Arrays.asList("foo", "bar", "baz");
+        List<Task> taskList = Task.find.all();
         return ok(tasks.render(taskList));
     }
 
