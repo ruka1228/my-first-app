@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -12,4 +14,6 @@ public class Task extends Model {
     public Integer id;
 
     public String name;
+
+    public Date period;
 }
