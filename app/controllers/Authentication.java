@@ -24,6 +24,9 @@ public class Authentication extends Controller {
     public static Form<Login> loginForm = Form.form(Login.class);
 
     public static Result index() {
+        if (session("login") != null) {
+            return ok("あなたは既に " + session("login") + "としてログインしています");
+        }
         return ok(index.render(loginForm));
     }
 
@@ -34,6 +37,7 @@ public class Authentication extends Controller {
             return badRequest(index.render(form));
         } else {
             Login login = form.get();
+            session("login", login.username);
             return ok("ようこそ " + login.username + " さん!!");
         }
     }
