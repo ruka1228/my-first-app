@@ -1,6 +1,9 @@
 package models;
 
 import javax.persistence.*;
+
+import org.mindrot.jbcrypt.BCrypt;
+
 import play.db.ebean.Model;
 
 @Entity
@@ -31,13 +34,13 @@ public class User extends Model {
      */
     public static Boolean authenticate(String username, String password) {
         User user = find.where().eq("name", username).findUnique();
-        return (user != null && user.password.equals(password));
+        return (user != null && BCrypt.checkpw(password, user.password));
     }
 
     public static Long create(String username, String password) {
         User user = new User();
         user.name = username;
-        user.password = password;
+        user.password = BCrypt.hashpw(password, BCrypt.gensalt());
         user.save();
 
         return user.id;
