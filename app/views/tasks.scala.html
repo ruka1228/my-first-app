@@ -6,8 +6,8 @@
     <h2>Add a new task</h2>
 
     @form(routes.Application.createTask()) {
-        @inputText(taskForm("name"))
-        @inputDate(taskForm("period"))
+        @inputText(taskForm("name"), '_label -> "タスク名")
+        @inputDate(taskForm("period"), '_label -> "期限")
         <input type="submit" value="Create" />
     }
 
