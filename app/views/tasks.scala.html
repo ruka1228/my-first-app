@@ -1,7 +1,11 @@
-@(taskList: List[Task])
+@(taskList: List[Task], taskForm: Form[Task])
 
 @common("今もってるタスク") {
     <h2>Add a new task</h2>
+
+    @for(error <- taskForm("name").errors) {
+        <p>@Messages(error.message)</p>
+    }
 
     <form action="@routes.Application.createTask()" method="POST">
         <p>

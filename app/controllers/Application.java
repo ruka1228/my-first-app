@@ -15,6 +15,7 @@ import play.mvc.*;
 import views.html.*;
 
 public class Application extends Controller {
+    public static Form<Task> taskForm = Form.form(Task.class);
 
     public static Result index() {
         return ok(index.render("Your new application is ready."));
@@ -22,14 +23,17 @@ public class Application extends Controller {
 
     public static Result tasks() {
         List<Task> taskList = Task.find.all();
-        return ok(tasks.render(taskList));
+        return ok(tasks.render(taskList, taskForm));
     }
 
     public static Result createTask() {
-        Form<Task> form = Form.form(Task.class).bindFromRequest();
+        Form<Task> form = taskForm.bindFromRequest();
 
         if (form.hasErrors()) {
-            return badRequest(form.errorsAsJson());
+            List<Task> taskList = Task.find.all();
+
+            // 制約エラーが発生したら、その情報を持っ form を渡してあげる
+            return badRequest(tasks.render(taskList, form));
         } else {
             Task newTask = form.get();
             newTask.save();
