@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import play.*;
@@ -19,16 +20,17 @@ public class Application extends Controller {
     }
 
     public static Result tasks() {
-        // java.util.Random;
-        Random rnd = new Random();
+        List<Task> taskList = Task.find.all();
+        return ok(tasks.render(taskList));
+    }
 
-        Task task   = new Task();
-        task.name   = "ピザを" + rnd.nextInt(10) + "枚食べる";
-        task.period = new Date();
-        task.save();
+    public static Result createTask() {
+        Map<String, String[]> params = request().body().asFormUrlEncoded();
 
-        List<Task> taskList = Task.find.where().eq("name", "ピザを5枚食べる").findList();
-        return ok(tasks.render(taskList, task));
+        Task newTask = new Task();
+        newTask.name = params.get("name")[0]; // <input type="text" name="name" /> に入力された値
+        newTask.save();
+        return redirect(routes.Application.tasks());
     }
 
     public static Result help() {
