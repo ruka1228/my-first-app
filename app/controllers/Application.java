@@ -28,6 +28,12 @@ public class Application extends Controller {
     }
 
     @Security.Authenticated(Secured.class)
+    public static Result myTasks() {
+        User user = User.find.where().eq("name", request().username()).findUnique();
+        return ok(myTasks.render(user.tasks));
+    }
+
+    @Security.Authenticated(Secured.class)
     public static Result createTask() {
         Form<Task> form = taskForm.bindFromRequest();
 

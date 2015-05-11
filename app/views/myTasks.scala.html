@@ -1,0 +1,17 @@
+@(taskList: List[Task])
+
+@import helper._
+
+@common("あなたのタスク") {
+    <h1>あなたのタスク一覧</h1>
+
+    @if(taskList.isEmpty()) {
+        Task は一件もありません
+    } else {
+       <ul>
+       @for(task <- taskList) {
+           <li>@task.name</li>
+       }
+       </ul>
+    }
+}

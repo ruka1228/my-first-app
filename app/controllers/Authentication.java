@@ -44,7 +44,7 @@ public class Authentication extends Controller {
         } else {
             Login login = form.get();
             session("login", login.username);
-            return ok("ようこそ " + login.username + " さん!!");
+            return redirect(routes.Application.myTasks());
         }
     }
 }
