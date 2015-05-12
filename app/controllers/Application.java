@@ -45,7 +45,7 @@ public class Application extends Controller {
         } else {
             Task newTask = form.get();
             User user = User.find.where().eq("name", request().username()).findUnique();
-            newTask.user = user;
+            newTask.users.add(user);
             newTask.save();
             return redirect(routes.Application.tasks());
         }

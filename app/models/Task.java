@@ -1,13 +1,13 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 
 import play.data.validation.Constraints.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
+import javax.persistence.ManyToMany;
 import play.db.ebean.Model;
 
 @Entity
@@ -23,8 +23,8 @@ public class Task extends Model {
 
     public Date period;
 
-    @ManyToOne
-    public User user;
+    @ManyToMany(mappedBy="tasks")
+    public List<User> users;
 
     public static Finder<Integer, Task> find = new Finder<Integer, Task>(
             Integer.class, Task.class

@@ -17,7 +17,7 @@ public class User extends Model {
 
     public String password;
 
-    @OneToMany
+    @ManyToMany
     public List<Task> tasks;
 
     public static Finder<Long, User> find = new Finder<Long,User>(
