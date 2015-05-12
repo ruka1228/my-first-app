@@ -19,7 +19,7 @@
        <ul>
        @for(task <- taskList) {
            <li>@task.name
-              <ul>
+              <ul class="list-inline">
               @for(user <- task.users) {
               <li>@user.name</li>
               }

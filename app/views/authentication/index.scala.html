@@ -3,20 +3,28 @@
 @import helper._
 
 <html>
+    <head>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <title>ToDo</title>
+    </head>
     <body>
-        <h1>ログインフォーム</h1>
+        <div class="container">
+            <h1>ログイン</h1>
 
-        @if(loginForm.hasGlobalErrors) {
-        <p class="error">
-            @loginForm.globalError.message
-        </p>
-        }
+            @if(loginForm.hasGlobalErrors) {
+                <div class="alert alert-danger">
+                    @loginForm.globalError.message
+                </div>
+            }
 
-        @form(routes.Authentication.authenticate()) {
-            @inputText(loginForm("username"))
-            @inputPassword(loginForm("password"))
+            <div class="row">
+                @form(routes.Authentication.authenticate(), 'class -> "col-md-6") {
+                @inputText(loginForm("username"), 'class -> "form-control")
+                @inputPassword(loginForm("password"), 'class -> "form-control")
 
-            <input type="submit" value="Login">
-        }
+                <input type="submit" value="Login">
+                }
+            </div>
+        </div>
     </body>
 </html>

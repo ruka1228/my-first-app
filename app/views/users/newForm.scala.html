@@ -2,15 +2,14 @@
 
 @import helper._
 
-<html>
-    <body>
-        <h1>ユーザ作成</h1>
+@common("ユーザ作成") {
+    <h1>ユーザ作成</h1>
+    <div class="row">
+        @form(routes.Users.createUser(), 'class -> "col-md-6") {
+            @inputText(userForm("name"), 'class -> "form-control")
+            @inputPassword(userForm("password"), 'class -> "form-control")
 
-        @form(routes.Users.createUser()) {
-            @inputText(userForm("name"))
-            @inputPassword(userForm("password"))
-
-            <input type="submit" value="Create">
+            <input type="submit" value="Create" class="btn btn-default">
         }
-    </body>
-</html>
+    </div>
+}

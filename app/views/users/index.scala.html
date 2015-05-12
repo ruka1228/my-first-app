@@ -1,21 +1,20 @@
 @(userList: List[User])
 
-<html>
-    <body>
-        <h1>ユーザ一覧</h1>
+@common("ユーザ一覧") {
+    <h1>ユーザ一覧</h1>
 
-        <a href="@routes.Users.newUser()">ユーザ作成</a>
+    <a href="@routes.Users.newUser()">ユーザ作成</a>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>ユーザ名</th>
-                    <th>パスワード</th>
-                    <th>作成済みのタスクの数</th>
-                </tr>
-            </thead>
-            <tbody>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ユーザ名</th>
+                <th>パスワード</th>
+                <th>作成済みのタスクの数</th>
+            </tr>
+        </thead>
+        <tbody>
             @for(u <- userList) {
                 <tr>
                     <td>@u.id</td>
@@ -24,7 +23,6 @@
                     <td>@u.tasks.length</td>
                 </tr>
             }
-            </tbody>
-        </table>
-    </body>
-</html>
+        </tbody>
+    </table>
+}
