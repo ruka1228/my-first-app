@@ -10,9 +10,6 @@ POST    /tasks                      controllers.Application.createTask()
 GET     /help                       controllers.Application.help()
 GET     /my                         controllers.Application.myTasks()
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
 GET     /login       controllers.Authentication.index()
 POST    /login       controllers.Authentication.authenticate()
 GET     /logout      controllers.Authentication.logout()
@@ -20,3 +17,7 @@ GET     /logout      controllers.Authentication.logout()
 GET     /users            controllers.Users.index()
 GET     /users/new        controllers.Users.newUser()
 POST    /users            controllers.Users.createUser()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /webjars/*file                    controllers.WebJarAssets.at(file)
